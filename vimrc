@@ -1,25 +1,27 @@
+" -----------------------------------------------PathogenSetup-----------------------------------------------------------------------------
 set nocompatible
 execute pathogen#infect()
 :call pathogen#helptags()
 filetype on
-syntax on
-colorscheme Tomorrow-Night
+" syntax on
+" colorscheme Tomorrow-Night
 set backspace=indent,eol,start
 
-set guifont=Menlo\ Regular:h18
-set lines=35 columns=150
-set colorcolumn=90
+" set lines=35 columns=150
+" set colorcolumn=90
 set number
 set hidden
 set history=100
-let mapleader=" "
-map <leader>s :source ~/.vimrc<CR>
 filetype indent on
 set hlsearch
-
-"nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 set showmatch
 
+
+" -----------------------------------------------Leader Mapping-----------------------------------------------------------------------------
+let mapleader=" "
+map <leader>s :source ~/.vimrc<CR>
+
+" -----------------------------------------------All Mappings-----------------------------------------------------------------------------
 " Use arrows in insert mode
 map <D-A-RIGHT> <C-w>l
 map <D-A-LEFT> <C-w>h
@@ -49,31 +51,24 @@ inoremap <C-s> <C-o>0
 :vmap <S-Right> <Right>
 
 
-" y is to yank or copy tet
-" p is to paste below cursor
-" G$ to go to end of file
-" w - jump by start of words (punctuation considered words)
-" W - jump by words (spaces separate words)
-" e - jump to end of words (punctuation considered words)
-" E - jump to end of words (no punctuation)
-" b - jump backward by words (punctuation considered words)
-" B - jump backward by words (no punctuation)
-" 0 - (zero) start of line
-" ^ - first non-blank character of line
-" $ - end of line
-" G - Go To command (prefix with number - 5G goes to line 5)
-" yy - yank (copy) a line
-" 2yy - yank 2 lines
-" yw - yank word
-" y$ - yank to end of line
-" p - put (paste) the clipboard after cursor
-" P - put (paste) before cursor
-" dd - delete (cut) a line
-" dw - delete (cut) the current word
-" x - delete (cut) current character
-" gg to go to start of file
-" G$ to go to the end of file" 
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
 
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
+" To move and reorder line in vim
+" n normal mode or in insert mode, press Alt-j to move the current line down, or press Alt-k to move the current line up.
+nnoremap <C-d> :m .+1<CR>==
+nnoremap <C-u> :m .-2<CR>==
+inoremap <C-d> <Esc>:m .+1<CR>==gi
+inoremap <C-u> <Esc>:m .-2<CR>==gi
+vnoremap <C-d> :m '>+1<CR>gv=gv
+vnoremap <C-u> :m '<-2<CR>gv=gv
+
+
+
+" -----------------------------------------------Nerd Commenter Plugin-----------------------------------------------------------------------------
 " ########################Start fo the commenter plugin below
 filetype plugin on
 
@@ -153,19 +148,53 @@ let g:NERDTrimTrailingWhitespace = 1
 " ######################################## End of commenter plugin
 
 
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
+" -----------------------------------------------Solarized theme vim editor-----------------------------------------------------------------------------
+" For solarised theme on the vim editor
+syntax enable
+" set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+" -----------------------------------------------SAVE VIEWS-----------------------------------------------------------------------------
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+" -----------------------------------------------SAVE VIEWS-----------------------------------------------------------------------------
 
-" Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
-
-" To move and reorder line in vim
-" n normal mode or in insert mode, press Alt-j to move the current line down, or press Alt-k to move the current line up.
-nnoremap <C-d> :m .+1<CR>==
-nnoremap <C-u> :m .-2<CR>==
-inoremap <C-d> <Esc>:m .+1<CR>==gi
-inoremap <C-u> <Esc>:m .-2<CR>==gi
-vnoremap <C-d> :m '>+1<CR>gv=gv
-vnoremap <C-u> :m '<-2<CR>gv=gv
-
-
+" y is to yank or copy tet
+" p is to paste below cursor
+" G$ to go to end of file
+" w - jump by start of words (punctuation considered words)
+" W - jump by words (spaces separate words)
+" e - jump to end of words (punctuation considered words)
+" E - jump to end of words (no punctuation)
+" b - jump backward by words (punctuation considered words)
+" B - jump backward by words (no punctuation)
+" 0 - (zero) start of line
+" ^ - first non-blank character of line
+" $ - end of line
+" G - Go To command (prefix with number - 5G goes to line 5)
+" yy - yank (copy) a line
+" 2yy - yank 2 lines
+" yw - yank word
+" y$ - yank to end of line
+" p - put (paste) the clipboard after cursor
+" P - put (paste) before cursor
+" dd - delete (cut) a line
+" dw - delete (cut) the current word
+" x - delete (cut) current character
+" gg to go to start of file
+" G$ to go to the end of file" 
+" space cc for comment
+" space c space for unncomment
+" space l for toggling list 
+" space t for command t
+" ctrl e is end of line
+" ctrl s is start of line
+" za to toggle fold
+" zf to start fold after selecting the required text
+" zM to close all folds
+" zR to open all folds
