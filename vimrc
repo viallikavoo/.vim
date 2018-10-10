@@ -65,7 +65,8 @@ inoremap <C-d> <Esc>:m .+1<CR>==gi
 inoremap <C-u> <Esc>:m .-2<CR>==gi
 vnoremap <C-d> :m '>+1<CR>gv=gv
 vnoremap <C-u> :m '<-2<CR>gv=gv
-
+noremap <F3> :set invnumber<CR>
+inoremap <F3> <C-O>:set invnumber<CR>
 
 
 " -----------------------------------------------Nerd Commenter Plugin-----------------------------------------------------------------------------
