@@ -9,6 +9,7 @@ set backspace=indent,eol,start
 
 " set lines=35 columns=150
 " set colorcolumn=90
+:set numberwidth=3
 set number
 set hidden
 set history=100
@@ -53,7 +54,9 @@ inoremap <C-s> <C-o>0
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
-
+" Show/hide line numbers 
+noremap <C-L> :set invnumber<CR>
+inoremap <C-L> <C-O>:set invnumber<CR>
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
@@ -65,9 +68,6 @@ inoremap <C-d> <Esc>:m .+1<CR>==gi
 inoremap <C-u> <Esc>:m .-2<CR>==gi
 vnoremap <C-d> :m '>+1<CR>gv=gv
 vnoremap <C-u> :m '<-2<CR>gv=gv
-noremap <F3> :set invnumber<CR>
-inoremap <F3> <C-O>:set invnumber<CR>
-
 
 " -----------------------------------------------Nerd Commenter Plugin-----------------------------------------------------------------------------
 " ########################Start fo the commenter plugin below
@@ -191,11 +191,14 @@ au BufWinEnter * silent loadview
 " G$ to go to the end of file" 
 " space cc for comment
 " space c space for unncomment
-" space l for toggling list 
+" space l for toggling list which will highlight unwanted spaces 
 " space t for command t
 " ctrl e is end of line
 " ctrl s is start of line
+" ctrl d to move line down
+" ctrl u to move line up
 " za to toggle fold
 " zf to start fold after selecting the required text
-" zM to close all folds
-" zR to open all folds
+" zm to close all folds
+" zr to open all folds
+" ctrl l to toggle line numbers
