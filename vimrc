@@ -16,7 +16,7 @@ set history=100
 filetype indent on
 set hlsearch
 set showmatch
-
+set re=2
 
 " -----------------------------------------------Leader Mapping-----------------------------------------------------------------------------
 let mapleader=" "
@@ -153,7 +153,7 @@ let g:NERDTrimTrailingWhitespace = 1
 " For solarised theme on the vim editor
 syntax enable
 " set background=dark
-colorscheme solarized
+" colorscheme solarized
 let g:solarized_termcolors=256
 if has('gui_running')
     set background=light
